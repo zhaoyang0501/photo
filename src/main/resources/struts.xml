@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+     <constant name ="struts.devMode" value="true"/>
+    <constant name ="struts.i18n.encoding" value= "UTF-8" />
+    <constant name ="struts.convention.result.path" value="/WEB-INF/views/"/>
+    <constant name ="struts.convention.package.locators" value="com.pzy.web.admin"/>
+    <constant name ="struts.objectFactory" value="spring"/>
+    <constant name ="struts.configuration.xml.reload" value="true"/>
+    <constant name="struts.multipart.maxSize" value="104857600"/> 
+    
+    
+     <package name ="admin"  namespace="/admin" extends="struts-default" >
+      <global-results>
+     	<result  name ="login">/WEB-INF/views/admin/login.jsp</result>
+         <result name ="error">/error.jsp</result>
+     </global-results>
+        <action name="adminindex" class="indexAction" method="index" >
+        	 <result >/WEB-INF/views/admin/index.jsp</result>
+        </action>
+         <action name="/login" class="indexAction" method="login" >
+        	 <result >/WEB-INF/views/admin/login.jsp</result>
+        </action>
+          <action name="loginout" class="indexAction" method="loginout" >
+        	 <result >/WEB-INF/views/admin/login.jsp</result>
+        </action>
+        
+           <action name="gologin" class="indexAction" method="gologin" >
+        	 <result>/WEB-INF/views/admin/index.jsp</result>
+        </action>
+    </package>
+    
+   <package name ="admin/photo" namespace="/admin/photo" extends="json-default" >
+        <action name="/index" class="photoAction" method="index" >
+        	 <result >/WEB-INF/views/admin/photo/index.jsp</result>
+        </action>
+        
+         <action name="list" class="photoAction" method="list" >
+        	 <result type="json" name="success"/>
+        </action>
+        
+          <action name="approveok" class="photoAction" method="approveok" >
+        	 <result type="json" name="success"/>
+        </action>
+        
+        <action name="approvenotok" class="photoAction" method="approvenotok" >
+        	 <result type="json" name="success"/>
+        </action>
+    </package>
+     
+      <package name ="admin/manger" namespace="/admin/adminuser" extends="json-default" >
+        <action name="index" class="adminUserAction" method="index" >
+        	 <result>/WEB-INF/views/admin/useradmin/index.jsp</result>
+        </action>
+        
+         <action name="list" class="adminUserAction" method="list" >
+        	 <result type="json" name="success"/>
+        </action>
+        
+          <action name="delete" class="adminUserAction" method="delete" >
+        	 <result type="json" name="success"/>
+        </action>
+        
+        <action name="get" class="adminUserAction" method="get" >
+        	 <result type="json" name="success"/>
+        </action>
+        
+         <action name="update" class="adminUserAction" method="update" >
+        	 <result type="json" name="success"/>
+        </action>
+        
+        <action name="save" class="adminUserAction" method="save" >
+        	 <result type="json" name="success"/>
+        </action>
+    </package>
+    
+          <package name ="admin/user" namespace="/admin/user" extends="json-default" >
+        <action name="index" class="userAction" method="index" >
+        	 <result>/WEB-INF/views/admin/user/index.jsp</result>
+        </action>
+        
+         <action name="list" class="userAction" method="list" >
+        	 <result type="json" name="success"/>
+        </action>
+        
+          <action name="delete" class="userAction" method="delete" >
+        	 <result type="json" name="success"/>
+        </action>
+        
+        <action name="get" class="userAction" method="get" >
+        	 <result type="json" name="success"/>
+        </action>
+        
+         <action name="update" class="userAction" method="update" >
+        	 <result type="json" name="success"/>
+        </action>
+        
+        <action name="save" class="userAction" method="save" >
+        	 <result type="json" name="success"/>
+        </action>
+    </package>
+    
+    
+     <package name ="admin/category"  namespace="/admin/category" extends="json-default" >
+        <action name="index" class="categoryAction" method="index" >
+        	 <result >/WEB-INF/views/admin/category/index.jsp</result>
+        </action>
+        
+         <action name="list" class="categoryAction" method="list" >
+        	 <result type="json" name="success"/>
+        </action>
+         <action name="delete" class="categoryAction" method="delete" >
+        	 <result type="json" name="success"/>
+        </action>
+         <action name="get" class="categoryAction" method="get" >
+        	 <result type="json" name="success"/>
+        </action>
+         <action name="update" class="categoryAction" method="update" >
+        	 <result type="json" name="success"/>
+        </action>
+        
+         <action name="save" class="categoryAction" method="save" >
+        	 <result type="json" name="success"/>
+        </action>
+    </package>
+    
+    
+     <package name ="front" namespace="/front" extends="json-default" >
+        <action name="index" class="frontAction" method="index" >
+        	 <result>/WEB-INF/views/index.jsp</result>
+        </action>
+        
+         <action name="login" class="frontAction" method="login" >
+        	 <result>/WEB-INF/views/login.jsp</result>
+        </action>
+        
+           <action name="dologin" class="frontAction" method="dologin" >
+        	  <result  name='success'>/WEB-INF/views/center.jsp</result>
+        	  <result  name='login'>/WEB-INF/views/login.jsp</result>
+        </action>
+        
+          <action name="register" class="frontAction" method="register" >
+        	 <result>/WEB-INF/views/register.jsp</result>
+        </action>
+      
+         <action name="doregister" class="frontAction" method="doregister" >
+        	 <result>/WEB-INF/views/login.jsp</result>
+        </action>
+          <action name="center" class="frontAction" method="center" >
+        	 <result>/WEB-INF/views/center.jsp</result>
+        </action>
+         <action name="myinfo" class="frontAction" method="myinfo" >
+        	 <result>/WEB-INF/views/myinfo.jsp</result>
+        </action>
+          <action name="mypic" class="frontAction" method="mypic" >
+        	 <result>/WEB-INF/views/mypic.jsp</result>
+        </action>
+        
+         <action name="uploadimg" class="frontAction" method="uploadimg" >
+        	 <result>/WEB-INF/views/center.jsp</result>
+        </action>
+    </package>
+    
+</struts>
