@@ -50,17 +50,17 @@
       <div class="col-sm-4">
         <h2>Welcome!</h2>
         <p>现在就加入我们的网站，贡献你的图片素材！</p>
-        <p><a class="btn btn-primary pull-right" href="login.html">登录</a></p>
+        <p><a class="btn btn-primary pull-right" href="${pageContext.request.contextPath}/front/login">登录</a></p>
       </div>
       <div class="col-sm-4">
         <h2>Recent Update!</h2>
         <p>看看其他人上传的精彩作品！</p>
-        <p><a class="btn btn-primary pull-right" href="picwall.html">照片墙</a></p>
+        <p><a class="btn btn-primary pull-right" href="${pageContext.request.contextPath}/front/picwall">照片墙</a></p>
       </div>
       <div class="col-sm-4">
         <h2>Contact Us!</h2>
         <p>了解我们的项目信息，加入我们的团队！</p>
-        <p><a class="btn btn-primary pull-right" href="information.html">联系我们</a></p>
+        <p><a class="btn btn-primary pull-right" href="">联系我们</a></p>
       </div>
     </div>
   </div>

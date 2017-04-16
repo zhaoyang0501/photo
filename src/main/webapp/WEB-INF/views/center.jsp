@@ -78,7 +78,7 @@
                     </div>
                      
                      <div class="panel-body">
-                   			<form action="front/uploadimg" class="form-horizontal" method="post" enctype="multipart/form-data">
+                   			<form action="${pageContext.request.contextPath}/front/uploadimg" class="form-horizontal" method="post" enctype="multipart/form-data">
 							  <div class="form-group">
 							    <label for="inputEmail3" class="col-sm-2 control-label">标签</label>
 							    <div class="col-sm-10">

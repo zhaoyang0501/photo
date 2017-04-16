@@ -17,5 +17,6 @@ public interface PhotoRepository extends MongoRepository<Photo, String> {
 	 public List<Photo> findByUser(User user);
     public List<Photo> findByState(String state);
     public Page<Photo> findByState(String name,Pageable pageable);
+    public Page<Photo> findByUserid(String user,Pageable pageable);
 
 }

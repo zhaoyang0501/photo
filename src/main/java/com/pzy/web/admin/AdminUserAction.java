@@ -128,7 +128,7 @@ public class AdminUserAction extends ActionSupport {
 	@Action(value = "save", results = { @Result(name = "success", type = "json") }, params = {
 			"contentType", "text/html" })
 	public String save() {
-		adminuser.setId(null);
+		//adminuser.setId(null);
 		adminUserService.save(adminuser);
 		resultMap.put("state", "success");
 		resultMap.put("msg", "保存成功");

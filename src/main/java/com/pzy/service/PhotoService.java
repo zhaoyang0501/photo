@@ -31,7 +31,12 @@ public class PhotoService {
 	public  List<Photo> findByUser(User user){
    	 return photoRepository.findByUserid(user.getId());
 	}
- 
+	
+	public  Page<Photo> findByUser(String user,Integer page,Integer pagesize){
+		  PageRequest pageRequest = new PageRequest(page, pagesize, new Sort(Direction.DESC, "createDate"));
+		  return  photoRepository.findByUserid(user, pageRequest);
+	}
+	
 	public Page<Photo> findAll(final int pageNumber, final int pageSize,final String state){
          PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize, new Sort(Direction.DESC, "id"));
          Page<Photo> result;

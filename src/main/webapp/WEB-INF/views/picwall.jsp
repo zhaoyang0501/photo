@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@include file="./validatelogin.jsp" %>
+   <%@taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
+         <%@include file="./validatelogin.jsp" %>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -16,7 +17,7 @@
 		<!-- DataTables http://www.datatables.net/  -->
 		<script src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/ace.js"></script>
-		<script src="${pageContext.request.contextPath}/js/contest.js"></script>
+		<script src="${pageContext.request.contextPath}/js/problem.js"></script>
 		<script src="${pageContext.request.contextPath}/admin/js/falgun/jquery.dataTables.min.js"></script>
 		<script src="${pageContext.request.contextPath}/admin/js/falgun/dataTables.bootstrap.js"></script>
 		<script src="${pageContext.request.contextPath}/admin/js/falgun/TableTools.min.js"></script>
@@ -30,7 +31,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$.ace.setContextPath('${pageContext.request.contextPath}');
-		$.adminContest.initSearchDataTable();
+		$.adminProblem.initSearchDataTable();
 	});
 </script>
 	</head>
@@ -39,42 +40,46 @@
 <!-- custom body begin -->
     <div class="container main">
         <div class="row">
-            <div class="col-md-9 col-lg-9  ">
-                <div>
-                    <table class="table table-striped" id='dt_table_view'>
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>比赛名称</th>
-                            <th>开始时间</th>
-                             <th>结束时间</th>
-                            <th>比赛类型</th>
-                            <th>状态</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+        
+        
+            <div class="col-md-12 col-lg-12 ">
+            
+            
+              <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                         <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                       		照片墙
+                        </h3>
+                    </div>
+                     
+                     <div class="panel-body">
+                   			<div class="row placeholders">
+                   			<c:forEach items="${photos }" var="bean">
+                   			<div class="col-xs-6 col-sm-3 placeholder">
+						              <img src="${pageContext.request.contextPath}/upload/${bean.url}" width="200" height="200px" style="max-height: 200px;height: 200px" class="img-responsive" alt="Generic placeholder thumbnail">
+						              <h4>${bean.category.name }</h4>
+						              <p class="text-muted">${bean.user.nickname }上传于 
+						              <f:formatDate value="${bean.createDate }" pattern="yyyy/MM/dd"/>
+						              </p>
+						            </div>
+                   			</c:forEach>
+						</div>
+                   			
+                	</div>
+                
+                
                 </div>
+                
+                
+                
+                
             </div>
-			
-			<div class="col-md-3 col-lg-3">
-			<div class="panel panel-info">
-			    <div class="panel-heading">
-			        <h3 class="panel-title">
-			            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-			            公告
-			        </h3></div>
-			    <div class="panel-body">
-			    
-			        
-			           <p>暂无可显示的公告</p>
-			        
-			    </div>
-			</div>
-            </div>
+
+          
         </div>
     </div>
+    <input type="hidden" id="categoryid">
      <%@include file="./foot.jsp" %>
 </body>
 </html>

@@ -14,7 +14,9 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -26,7 +28,8 @@ import com.pzy.service.CategoryService;
 import com.pzy.service.PhotoService;
 import com.pzy.service.UserService;
 
-@Controller
+@Controller()
+@Scope("prototype")
 @Namespace("/front")
 public class FrontAction  extends ActionSupport{
 
@@ -59,6 +62,7 @@ public class FrontAction  extends ActionSupport{
 	@Autowired 
 	private PhotoService photoService;
 	
+	private int page=0;
 	
 	public List<Photo> getPhotos() {
 		return photos;
@@ -114,8 +118,9 @@ public class FrontAction  extends ActionSupport{
       */
      @Action(value = "loginout", results = { @Result(name = "success", location = "/WEB-INF/views/front/loginout.jsp") })
      public String loginout(){
-    	 	ActionContext.getContext().getSession().remove("adminuser");
+    	 	ActionContext.getContext().getSession().remove("user");
     	 	ActionContext.getContext().getSession().clear();
+    	 	 this.tip ="退出成功，请重新登录";
     	 	return SUCCESS;
      }
     
@@ -126,6 +131,7 @@ public class FrontAction  extends ActionSupport{
      
      @Action(value = "center", results = { @Result(name = "success", location = "/WEB-INF/views/front/center.jsp") })
      public String center(){
+    	 this.categorys=categoryService.findAll();
           return SUCCESS;
      }
      
@@ -135,8 +141,12 @@ public class FrontAction  extends ActionSupport{
      }
      @Action(value = "mypic", results = { @Result(name = "success", location = "/WEB-INF/views/front/mypic.jsp") })
      public String mypic(){
-    	 this.photos=this.photoService.findByUser( (User)ServletActionContext.getRequest().getSession().getAttribute("user"));
-        System.out.println(this.getPhotos().size());
+    	 User user  = (User)ServletActionContext.getRequest().getSession().getAttribute("user");
+    	 Assert.notNull(user,"未登录不允许操作！");
+    	 if(page<0)
+    		 page=0;
+    	 this.photos=this.photoService.findByUser(user.getId(), page, 12).getContent();
+    	 System.out.println(this.getPhotos().size());
     	 return SUCCESS;
      }
      @Action(value = "picwall", results = { @Result(name = "success", location = "/WEB-INF/views/front/mypic.jsp") })
@@ -170,6 +180,7 @@ public class FrontAction  extends ActionSupport{
 	        	p.setUserid(user.getId());
 	        	p.setUrl(newfilename);
 	        	photoService.save(p);
+	        	 this.categorys=categoryService.findAll();
 	        	this.tip="文件上传成功！！";
         		return SUCCESS;
 	        }
@@ -230,6 +241,12 @@ public class FrontAction  extends ActionSupport{
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
 	}
      
      

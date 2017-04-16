@@ -91,8 +91,8 @@
 						</div>
                    			<nav aria-label="...">
 							  <ul class="pager">
-							    <li><a href="#">前一页</a></li>
-							    <li><a href="#">下一页</a></li>
+							    <li><a href="${pageContext.request.contextPath}/front/mypic?page=${page-1 }">前一页</a></li>
+							    <li><a href="${pageContext.request.contextPath}/front/mypic?page=${page+1 }">下一页</a></li>
 							  </ul>
 							</nav>
                 	</div>

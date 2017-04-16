@@ -135,7 +135,9 @@
          <action name="login" class="frontAction" method="login" >
         	 <result>/WEB-INF/views/login.jsp</result>
         </action>
-        
+         <action name="loginout" class="indexAction" method="loginout" >
+        	 <result >/WEB-INF/views/login.jsp</result>
+        </action>
            <action name="dologin" class="frontAction" method="dologin" >
         	  <result  name='success'>/WEB-INF/views/center.jsp</result>
         	  <result  name='login'>/WEB-INF/views/login.jsp</result>

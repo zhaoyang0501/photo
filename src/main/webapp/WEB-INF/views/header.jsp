@@ -5,7 +5,7 @@
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">Packet-分享你的图片资源，为我们的研究贡献力量</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/index">Packet-分享你的图片资源，为我们的研究贡献力量</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -15,8 +15,8 @@
       
       <c:if test="${sessionScope.user==null}">
 	      <ul class="nav navbar-nav navbar-right">
-	       <li><a href="${pageContext.request.contextPath}/register">注册</a></li>
-	     	 <li><a href="${pageContext.request.contextPath}/login">登录</a></li>
+	       <li><a href="${pageContext.request.contextPath}/front/register">注册</a></li>
+	     	 <li><a href="${pageContext.request.contextPath}/front/login">登录</a></li>
 	      </ul>
       </c:if>
       
@@ -26,8 +26,7 @@
 								<li class="dropdown">
 								  <a href="#" class="dropdown-toggle" data-toggle="dropdown">${sessionScope.user.nickname } <b class="caret"></b></a>
 								  <ul class="dropdown-menu">
-									<li><a href="#">我的提交</a></li>
-									<li><a href="${pageContext.request.contextPath}/loginout">退出</a></li>
+									<li><a href="${pageContext.request.contextPath}/front/loginout">退出</a></li>
 								  </ul>
 								</li>
 			 </ul>

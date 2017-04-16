@@ -27,16 +27,21 @@
 			<div class="tab-pane active dailyreport" id="dailyreport">
 				<ul id="nav" class="accordion-nav" >
 			
-				<li><a href="${pageContext.request.contextPath}/admin/photo/index"><i class="icon-zoom-in"></i>照片审核</a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/category/index"><i class="icon-upload"></i>标签管理 </a></li>
-				<li><a href="${pageContext.request.contextPath}/admin/adminuser/index"><i class="icon-zoom-in"></i>管理员管理</a></li>
-				<li><a href="${pageContext.request.contextPath}/admin/user/index"><i class="icon-zoom-in"></i>注册用户管理</a></li>
-		
-				<c:if test="${sessionScope.adminuser.role6=='yes'}">
-				 <!--  <li><a href="${pageContext.request.contextPath}/admin/adminuser/index"><i class="icon-zoom-in"></i>管理员维护</a></li>-->
+				<c:if test="${sessionScope.adminuser.role1=='yes'}">
+					 <li><a href="${pageContext.request.contextPath}/admin/category/index"><i class="icon-upload"></i>标签管理 </a></li>
 				</c:if>	
 				
+				<c:if test="${sessionScope.adminuser.role2=='yes'}">
+				 	<li><a href="${pageContext.request.contextPath}/admin/photo/index"><i class="icon-zoom-in"></i>照片审核</a></li>
+				</c:if>	
 				
+				<c:if test="${sessionScope.adminuser.role3=='yes'}">
+					 <li><a href="${pageContext.request.contextPath}/admin/user/index"><i class="icon-zoom-in"></i>注册用户管理</a></li>
+				</c:if>	
+				
+					<c:if test="${sessionScope.adminuser.role4=='yes'}">
+						<li><a href="${pageContext.request.contextPath}/admin/adminuser/index"><i class="icon-zoom-in"></i>管理员管理</a></li>
+				</c:if>	
 				</ul>
 			</div>
 		</div>
