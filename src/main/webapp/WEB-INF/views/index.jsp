@@ -55,7 +55,7 @@
       <div class="col-sm-4">
         <h2>Recent Update!</h2>
         <p>看看其他人上传的精彩作品！</p>
-        <p><a class="btn btn-primary pull-right" href="picwall.html">手气不错</a></p>
+        <p><a class="btn btn-primary pull-right" href="picwall.html">照片墙</a></p>
       </div>
       <div class="col-sm-4">
         <h2>Contact Us!</h2>

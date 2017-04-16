@@ -89,7 +89,12 @@
 						            </div>
                    			</c:forEach>
 						</div>
-                   			
+                   			<nav aria-label="...">
+							  <ul class="pager">
+							    <li><a href="#">前一页</a></li>
+							    <li><a href="#">下一页</a></li>
+							  </ul>
+							</nav>
                 	</div>
                 
                 

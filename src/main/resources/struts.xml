@@ -158,6 +158,9 @@
         	 <result>/WEB-INF/views/mypic.jsp</result>
         </action>
         
+         <action name="picwall" class="frontAction" method="picwall" >
+        	 <result>/WEB-INF/views/picwall.jsp</result>
+        </action>
          <action name="uploadimg" class="frontAction" method="uploadimg" >
         	 <result>/WEB-INF/views/center.jsp</result>
         </action>

@@ -139,6 +139,13 @@ public class FrontAction  extends ActionSupport{
         System.out.println(this.getPhotos().size());
     	 return SUCCESS;
      }
+     @Action(value = "picwall", results = { @Result(name = "success", location = "/WEB-INF/views/front/mypic.jsp") })
+     public String picwall(){
+    	 this.photos=this.photoService.findAll(1, 20, "合格").getContent();
+    	 System.out.println(this.getPhotos().size());
+    	 return SUCCESS;
+     }
+     
      public String uploadimg() throws FileNotFoundException, IOException{
     	 System.out.println("ddddddddd"+this.imageFileName);
     	 if (this.image!=null) {
